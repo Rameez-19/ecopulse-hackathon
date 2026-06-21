@@ -1,65 +1,88 @@
-import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight, BarChart3, BrainCircuit, Target } from "lucide-react";
 
-export default function Home() {
+export default function LandingPage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <div className="flex min-h-screen flex-col overflow-hidden bg-slate-50 dark:bg-slate-950">
+      {/* Hero Section */}
+      <section className="relative px-6 pt-12 pb-24 md:pt-16 md:pb-32 lg:px-8">
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-emerald-100 via-slate-50 to-slate-50 dark:from-emerald-900/20 dark:via-slate-950 dark:to-slate-950" />
+        <div className="mx-auto max-w-4xl text-center">
+          <div className="mb-8 inline-flex animate-bounce items-center rounded-full bg-emerald-100 px-4 py-2 text-base font-semibold text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300">
+            <span className="flex h-2.5 w-2.5 rounded-full bg-emerald-500 mr-2.5"></span>
+            Powered by Gemini AI
+          </div>
+          <h1 className="text-5xl font-extrabold tracking-tight sm:text-7xl">
+            Know Your Carbon Footprint. <br className="hidden md:block" />
+            <span className="bg-gradient-to-r from-emerald-500 to-teal-400 bg-clip-text text-transparent">
+              Reduce It One Action At A Time.
+            </span>
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="mx-auto mt-8 max-w-2xl text-xl leading-9 text-slate-600 dark:text-slate-400">
+            EcoPulse AI is your intelligent sustainability companion. Calculate your emissions, receive personalized AI coaching, and build sustainable habits through gamified challenges.
           </p>
+          <div className="mt-12 flex items-center justify-center gap-x-8">
+            <Link
+              href="/onboarding"
+              className="group flex items-center gap-2 rounded-full bg-emerald-600 px-10 py-5 text-lg font-bold text-white shadow-lg shadow-emerald-500/30 transition-all hover:scale-105 hover:bg-emerald-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600"
+            >
+              Calculate Your Score
+              <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+            </Link>
+            <Link
+              href="#features"
+              className="text-lg font-bold leading-6 text-slate-900 transition-colors hover:text-emerald-600 dark:text-slate-100 dark:hover:text-emerald-400"
+            >
+              Learn more <span aria-hidden="true">→</span>
+            </Link>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* Features Section */}
+      <section id="features" className="py-24 sm:py-32">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="text-lg font-bold leading-7 text-emerald-600 dark:text-emerald-400">Smarter Sustainability</h2>
+            <p className="mt-3 text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl dark:text-white">
+              Everything you need to reduce your impact
+            </p>
+          </div>
+          <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
+            <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
+              {[
+                {
+                  name: 'Intelligent Carbon Calculator',
+                  description: 'Accurately measure your emissions across transport, energy, food, and shopping using robust industry-standard factors.',
+                  icon: BarChart3,
+                },
+                {
+                  name: 'Gemini AI Sustainability Coach',
+                  description: 'Receive personalized, actionable recommendations generated by Google Gemini AI tailored strictly to your lifestyle habits.',
+                  icon: BrainCircuit,
+                },
+                {
+                  name: 'Gamified Eco Challenges',
+                  description: 'Build sustainable habits by participating in smart challenges. Earn points, hit streaks, and climb the global leaderboard.',
+                  icon: Target,
+                },
+              ].map((feature) => (
+                <div key={feature.name} className="flex flex-col rounded-3xl bg-white p-10 shadow-xl shadow-slate-200/50 ring-1 ring-slate-200 dark:bg-slate-900 dark:shadow-none dark:ring-slate-800 transition-transform hover:-translate-y-2">
+                  <dt className="flex items-center gap-x-4 text-xl font-bold leading-8 text-slate-900 dark:text-white">
+                    <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-emerald-100 dark:bg-emerald-900/30">
+                      <feature.icon className="h-8 w-8 text-emerald-600 dark:text-emerald-400" aria-hidden="true" />
+                    </div>
+                    {feature.name}
+                  </dt>
+                  <dd className="mt-6 flex flex-auto flex-col text-lg leading-8 text-slate-600 dark:text-slate-400">
+                    <p className="flex-auto">{feature.description}</p>
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </div>
         </div>
-      </main>
+      </section>
     </div>
   );
 }
