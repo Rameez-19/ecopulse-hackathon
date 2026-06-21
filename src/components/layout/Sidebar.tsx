@@ -16,24 +16,26 @@ export function Sidebar() {
         <div className="mb-6 px-3 text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
           Main Menu
         </div>
-        <ul className="space-y-2">
+        <nav aria-label="Sidebar Navigation">
+          <ul className="space-y-2">
           {navItems.map((item) => (
             <li key={item.name}>
               <Link
                 href={item.href}
                 className="group flex items-center rounded-xl px-3 py-2.5 text-sm font-medium text-slate-700 transition-all hover:bg-emerald-50 hover:text-emerald-700 dark:text-slate-300 dark:hover:bg-emerald-950/30 dark:hover:text-emerald-400"
               >
-                <item.icon className="mr-3 h-5 w-5 flex-shrink-0 text-slate-400 transition-colors group-hover:text-emerald-600 dark:text-slate-500 dark:group-hover:text-emerald-400" />
+                <item.icon className="mr-3 h-5 w-5 flex-shrink-0 text-slate-400 transition-colors group-hover:text-emerald-600 dark:text-slate-500 dark:group-hover:text-emerald-400" aria-hidden="true" />
                 {item.name}
               </Link>
             </li>
           ))}
         </ul>
+        </nav>
         
         <div className="mt-auto">
           <div className="rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 p-4 text-white shadow-lg shadow-emerald-500/20">
             <div className="mb-2 flex items-center gap-2 font-bold">
-              <Sparkles className="h-5 w-5 text-emerald-200" />
+              <Sparkles className="h-5 w-5 text-emerald-200" aria-hidden="true" />
               <span>Eco Status</span>
             </div>
             <div className="text-sm text-emerald-50">

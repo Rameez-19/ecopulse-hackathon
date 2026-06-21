@@ -38,7 +38,7 @@ export default function OnboardingPage() {
   const needsFuelSelection = ['car', 'motorcycle', 'shared_cab'].includes(data.transportMode);
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+    <main className="min-h-screen bg-slate-50 dark:bg-slate-950 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-xl">
         <h2 className="mt-6 text-center text-3xl font-extrabold text-slate-900 dark:text-white">
           Calculate Your Footprint
@@ -63,8 +63,8 @@ export default function OnboardingPage() {
           {step === 1 && (
             <div className="animate-in slide-in-from-right-8 duration-500">
               <div className="flex items-center gap-4 mb-6">
-                <div className="p-3 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 rounded-xl">
-                  <Car className="h-6 w-6" />
+                <div className="p-3 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 rounded-xl" aria-hidden="true">
+                  <Car className="h-6 w-6" aria-hidden="true" />
                 </div>
                 <h2 className="text-2xl font-bold">Transport</h2>
               </div>
@@ -154,8 +154,8 @@ export default function OnboardingPage() {
           {step === 2 && (
             <div className="animate-in slide-in-from-right-8 duration-500">
               <div className="flex items-center gap-4 mb-6">
-                <div className="p-3 bg-amber-100 dark:bg-amber-900/30 text-amber-600 rounded-xl">
-                  <Zap className="h-6 w-6" />
+                <div className="p-3 bg-amber-100 dark:bg-amber-900/30 text-amber-600 rounded-xl" aria-hidden="true">
+                  <Zap className="h-6 w-6" aria-hidden="true" />
                 </div>
                 <h2 className="text-2xl font-bold">Home Energy</h2>
               </div>
@@ -215,8 +215,8 @@ export default function OnboardingPage() {
           {step === 3 && (
             <div className="animate-in slide-in-from-right-8 duration-500">
               <div className="flex items-center gap-4 mb-6">
-                <div className="p-3 bg-rose-100 dark:bg-rose-900/30 text-rose-600 rounded-xl">
-                  <Utensils className="h-6 w-6" />
+                <div className="p-3 bg-rose-100 dark:bg-rose-900/30 text-rose-600 rounded-xl" aria-hidden="true">
+                  <Utensils className="h-6 w-6" aria-hidden="true" />
                 </div>
                 <h2 className="text-2xl font-bold">Diet & Food</h2>
               </div>
@@ -252,8 +252,8 @@ export default function OnboardingPage() {
           {step === 4 && (
             <div className="animate-in slide-in-from-right-8 duration-500">
               <div className="flex items-center gap-4 mb-6">
-                <div className="p-3 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 rounded-xl">
-                  <ShoppingBag className="h-6 w-6" />
+                <div className="p-3 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 rounded-xl" aria-hidden="true">
+                  <ShoppingBag className="h-6 w-6" aria-hidden="true" />
                 </div>
                 <h2 className="text-2xl font-bold">Shopping Habits</h2>
               </div>
@@ -287,19 +287,19 @@ export default function OnboardingPage() {
                   : 'text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800'
               }`}
             >
-              <ArrowLeft className="h-4 w-4" /> Back
+              <ArrowLeft className="h-4 w-4" aria-hidden="true" /> Back
             </button>
             <button
               onClick={handleNext}
               className="flex items-center gap-2 px-8 py-3 rounded-full bg-emerald-600 text-white text-sm font-bold shadow-lg shadow-emerald-500/30 hover:scale-105 hover:bg-emerald-500 transition-all"
             >
               {step === 4 ? 'See My Footprint' : 'Continue'} 
-              {step !== 4 && <ArrowRight className="h-4 w-4" />}
+              {step !== 4 && <ArrowRight className="h-4 w-4" aria-hidden="true" />}
             </button>
           </div>
           
         </div>
       </div>
-    </div>
+    </main>
   );
 }

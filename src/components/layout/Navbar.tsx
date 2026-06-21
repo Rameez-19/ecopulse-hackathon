@@ -12,8 +12,8 @@ export function Navbar() {
     <header className="sticky top-0 z-50 w-full border-b border-white/20 bg-white/60 backdrop-blur-xl dark:bg-slate-950/60 supports-[backdrop-filter]:bg-white/60">
       <div className="flex w-full h-16 items-center px-6 md:px-12 relative">
         <Link href="/" className="flex items-center gap-2 transition-transform hover:scale-105">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-400 to-teal-600 text-white shadow-lg shadow-emerald-500/20">
-            <Leaf className="h-6 w-6" />
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-400 to-teal-600 text-white shadow-lg shadow-emerald-500/20" aria-hidden="true">
+            <Leaf className="h-6 w-6" aria-hidden="true" />
           </div>
           <span className="hidden text-xl font-bold tracking-tight md:inline-block bg-clip-text text-transparent bg-gradient-to-r from-emerald-600 to-teal-800 dark:from-emerald-400 dark:to-teal-200">
             EcoPulse
@@ -26,13 +26,14 @@ export function Navbar() {
             {/* Notification Button */}
             <div className="relative">
               <button 
+                aria-label="Notifications"
                 onClick={() => {
                   setShowNotifications(!showNotifications);
                   setShowProfile(false);
                 }}
-                className="relative flex h-10 w-10 items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                className="relative flex h-10 w-10 items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors focus:ring-2 focus:ring-emerald-500"
               >
-                <Bell className="h-5 w-5 text-slate-600 dark:text-slate-300" />
+                <Bell className="h-5 w-5 text-slate-600 dark:text-slate-300" aria-hidden="true" />
                 <span className="absolute right-2.5 top-2.5 flex h-2 w-2 rounded-full bg-emerald-500 ring-2 ring-white dark:ring-slate-950" />
               </button>
 
@@ -42,8 +43,8 @@ export function Navbar() {
                   <h3 className="font-bold text-slate-900 dark:text-white mb-3">Notifications</h3>
                   <div className="space-y-3">
                     <div className="flex gap-3 items-start border-b border-slate-100 dark:border-slate-800 pb-3">
-                      <div className="p-2 bg-emerald-100 dark:bg-emerald-900/30 rounded-full text-emerald-600">
-                        <Award className="h-4 w-4" />
+                      <div className="p-2 bg-emerald-100 dark:bg-emerald-900/30 rounded-full text-emerald-600" aria-hidden="true">
+                        <Award className="h-4 w-4" aria-hidden="true" />
                       </div>
                       <div>
                         <div className="text-sm font-semibold text-slate-900 dark:text-white">Let&apos;s make an impact</div>
@@ -66,17 +67,18 @@ export function Navbar() {
 
             {/* Profile Button */}
             <div className="relative">
-              <div 
+              <button 
+                aria-label="User Profile"
                 onClick={() => {
                   setShowProfile(!showProfile);
                   setShowNotifications(false);
                 }}
-                className="h-10 w-10 overflow-hidden rounded-full border-2 border-emerald-500/20 bg-slate-100 p-1 hover:border-emerald-500 transition-colors cursor-pointer"
+                className="h-10 w-10 overflow-hidden rounded-full border-2 border-emerald-500/20 bg-slate-100 p-1 hover:border-emerald-500 transition-colors cursor-pointer focus:ring-2 focus:ring-emerald-500"
               >
                 <div className="flex h-full w-full items-center justify-center rounded-full bg-slate-200 dark:bg-slate-800">
-                  <User className="h-5 w-5 text-slate-500" />
+                  <User className="h-5 w-5 text-slate-500" aria-hidden="true" />
                 </div>
-              </div>
+              </button>
 
               {/* Profile Dropdown */}
               {showProfile && (
