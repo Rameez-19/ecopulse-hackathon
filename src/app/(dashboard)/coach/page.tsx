@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { BrainCircuit, Sparkles, Loader2, ArrowRight } from "lucide-react";
+import { useState, useEffect, useCallback } from "react";
+import { BrainCircuit, Sparkles, Loader2 } from "lucide-react";
 import { OnboardingData } from "@/lib/emissions";
 
 export default function AICoachPage() {
@@ -19,9 +19,9 @@ export default function AICoachPage() {
     // Load local ecoData
     const data = localStorage.getItem("ecoData");
     if (data) {
-      setUserData(JSON.parse(data));
+      setTimeout(() => setUserData(JSON.parse(data)), 0);
     } else {
-      setUserData({
+      setTimeout(() => setUserData({
         transportMode: "car",
         fuelType: "petrol",
         dailyCommuteKm: 25,
@@ -30,11 +30,11 @@ export default function AICoachPage() {
         electricityKwh: 450,
         householdSize: 2,
         onlinePurchases: 5,
-      });
+      }), 0);
     }
   }, []);
 
-  const fetchRecommendations = async () => {
+  const fetchRecommendations = useCallback(async () => {
     setLoading(true);
     try {
       const res = await fetch("/api/ai/coach", {
@@ -49,10 +49,10 @@ export default function AICoachPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [userData]);
 
   return (
-    <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+    <main className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
       <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
         <div>
           <h1 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-3">
@@ -93,7 +93,7 @@ export default function AICoachPage() {
                   <div>
                     <p className="font-bold text-slate-900 dark:text-white">Fueling Your Body</p>
                     <p className="text-sm text-slate-500 leading-relaxed mt-1">
-                      Your <strong className="text-rose-600 dark:text-rose-400 capitalize">{userData.dietType.replace('_', ' ')}</strong> diet fuels you. What we put on our plate deeply connects us to Earth's resources.
+                      Your <strong className="text-rose-600 dark:text-rose-400 capitalize">{userData.dietType.replace('_', ' ')}</strong> diet fuels you. What we put on our plate deeply connects us to Earth&apos;s resources.
                     </p>
                   </div>
                 </div>
@@ -171,6 +171,6 @@ export default function AICoachPage() {
         </div>
 
       </div>
-    </div>
+    </main>
   );
 }

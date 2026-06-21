@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Map, Loader2, ArrowRight, Lightbulb } from "lucide-react";
 
 export default function SimulatorPage() {
@@ -21,7 +21,7 @@ export default function SimulatorPage() {
     }
   }, []);
 
-  const runSimulation = async (scenarioToRun: string) => {
+  const runSimulation = useCallback(async (scenarioToRun: string) => {
     if (!scenarioToRun.trim()) return;
     
     setLoading(true);
@@ -40,7 +40,7 @@ export default function SimulatorPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [currentCo2]);
 
   const predefinedScenarios = [
     "What if I switch to a 100% plant-based diet?",
@@ -50,7 +50,7 @@ export default function SimulatorPage() {
   ];
 
   return (
-    <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+    <main className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
       <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
         <div>
           <h1 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-3">
@@ -70,6 +70,7 @@ export default function SimulatorPage() {
           <div className="rounded-3xl bg-white p-6 shadow-xl shadow-slate-200/40 ring-1 ring-slate-100 dark:bg-slate-900 dark:shadow-none dark:ring-slate-800">
             <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-4">Custom Scenario</h3>
             <textarea
+              aria-label="Custom scenario input"
               value={scenarioInput}
               onChange={(e) => setScenarioInput(e.target.value)}
               placeholder="E.g., What if I stop eating beef and only eat chicken?"
@@ -93,6 +94,7 @@ export default function SimulatorPage() {
               {predefinedScenarios.map((scenario, i) => (
                 <button
                   key={i}
+                  aria-label={`Run scenario: ${scenario}`}
                   onClick={() => runSimulation(scenario)}
                   className="w-full text-left text-sm p-3 rounded-lg bg-white/60 dark:bg-slate-900/50 text-slate-700 dark:text-slate-300 hover:bg-teal-100 dark:hover:bg-teal-900/40 transition-colors"
                 >
@@ -150,6 +152,6 @@ export default function SimulatorPage() {
         </div>
 
       </div>
-    </div>
+    </main>
   );
 }

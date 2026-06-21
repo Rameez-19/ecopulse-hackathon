@@ -21,11 +21,11 @@ export default function ChallengesPage() {
   ];
 
   return (
-    <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+    <main className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
       <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
         <div>
           <h1 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-3">
-            <Target className="h-8 w-8 text-rose-500" />
+            <Target className="h-8 w-8 text-rose-500" aria-hidden="true" />
             Challenges & Rewards
           </h1>
           <p className="mt-2 text-slate-500 dark:text-slate-400">
@@ -46,7 +46,7 @@ export default function ChallengesPage() {
       </div>
 
       {/* Tabs */}
-      <div className="flex space-x-2 border-b border-slate-200 dark:border-slate-800 pb-px">
+      <nav aria-label="Challenge Tabs" className="flex space-x-2 border-b border-slate-200 dark:border-slate-800 pb-px">
         <button
           onClick={() => setActiveTab("challenges")}
           className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors ${
@@ -67,7 +67,7 @@ export default function ChallengesPage() {
         >
           My Badges
         </button>
-      </div>
+      </nav>
 
       {activeTab === "challenges" && (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -121,6 +121,6 @@ export default function ChallengesPage() {
           ))}
         </div>
       )}
-    </div>
+    </main>
   );
 }

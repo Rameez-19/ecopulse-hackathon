@@ -55,11 +55,11 @@ export default function CommunityPage() {
   ];
 
   return (
-    <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+    <main className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
       <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
         <div>
           <h1 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-3">
-            <Globe2 className="h-8 w-8 text-indigo-500" />
+            <Globe2 className="h-8 w-8 text-indigo-500" aria-hidden="true" />
             Global Impact Community
           </h1>
           <p className="mt-2 text-slate-500 dark:text-slate-400">
@@ -97,10 +97,10 @@ export default function CommunityPage() {
                     {item.action}
                   </p>
                   <div className="mt-4 flex gap-4 border-t border-slate-100 dark:border-slate-800 pt-4">
-                    <button className="flex items-center gap-1.5 text-sm text-slate-500 hover:text-rose-500 transition-colors">
+                    <button aria-label={`Like post by ${item.user}`} className="flex items-center gap-1.5 text-sm text-slate-500 hover:text-rose-500 transition-colors">
                       <Heart className="h-4 w-4" /> {item.likes}
                     </button>
-                    <button className="flex items-center gap-1.5 text-sm text-slate-500 hover:text-indigo-500 transition-colors">
+                    <button aria-label={`Comment on post by ${item.user}`} className="flex items-center gap-1.5 text-sm text-slate-500 hover:text-indigo-500 transition-colors">
                       <MessageSquare className="h-4 w-4" /> {item.comments}
                     </button>
                   </div>
@@ -162,6 +162,6 @@ export default function CommunityPage() {
         </div>
 
       </div>
-    </div>
+    </main>
   );
 }

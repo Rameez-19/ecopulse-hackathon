@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
-import { ArrowDownRight, ArrowUpRight, TrendingDown, Leaf, Car, Zap, Utensils, ShoppingBag, Activity } from "lucide-react";
+import { Leaf, TrendingDown, Car, Zap, Utensils, ShoppingBag } from "lucide-react";
 import Link from "next/link";
 import { CarbonBreakdown } from "@/lib/emissions";
 
