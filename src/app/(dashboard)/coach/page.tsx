@@ -19,9 +19,11 @@ export default function AICoachPage() {
     // Load local ecoData
     const data = localStorage.getItem("ecoData");
     if (data) {
-      setTimeout(() => setUserData(JSON.parse(data)), 0);
+      // eslint-disable-next-line
+      setUserData(JSON.parse(data));
     } else {
-      setTimeout(() => setUserData({
+      // eslint-disable-next-line
+      setUserData({
         transportMode: "car",
         fuelType: "petrol",
         dailyCommuteKm: 25,
@@ -30,7 +32,7 @@ export default function AICoachPage() {
         electricityKwh: 450,
         householdSize: 2,
         onlinePurchases: 5,
-      }), 0);
+      });
     }
   }, []);
 
@@ -50,6 +52,15 @@ export default function AICoachPage() {
       setLoading(false);
     }
   }, [userData]);
+  const renderBoldText = (text: string) => {
+    const parts = text.split(/(\*\*.*?\*\*)/g);
+    return parts.map((part, idx) => {
+      if (part.startsWith('**') && part.endsWith('**')) {
+        return <strong key={idx} className="font-bold text-white">{part.slice(2, -2)}</strong>;
+      }
+      return part;
+    });
+  };
 
   return (
     <main className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
@@ -156,14 +167,16 @@ export default function AICoachPage() {
                   if (line.startsWith('* ') || line.startsWith('- ')) {
                     const text = line.substring(2);
                     return (
-                      <li key={i} className="ml-6 mb-3 text-slate-300 leading-relaxed text-lg list-disc" dangerouslySetInnerHTML={{ __html: text.replace(/\*\*(.*?)\*\*/g, '<strong class="text-white font-bold">$1</strong>') }} />
+                      <li key={i} className="ml-6 mb-3 text-slate-300 leading-relaxed text-lg list-disc">
+                        {renderBoldText(text)}
+                      </li>
                     );
                   }
                   
                   if (line.trim() === '') return <br key={i} />;
                   
                   // Paragraphs with bold text support
-                  return <p key={i} className="mb-5 text-slate-300 leading-relaxed text-lg" dangerouslySetInnerHTML={{ __html: line.replace(/\*\*(.*?)\*\*/g, '<strong class="text-white font-bold">$1</strong>') }} />;
+                  return <p key={i} className="mb-5 text-slate-300 leading-relaxed text-lg">{renderBoldText(line)}</p>;
                 })}
               </div>
             )}

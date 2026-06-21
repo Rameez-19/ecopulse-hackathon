@@ -42,6 +42,16 @@ export default function SimulatorPage() {
     }
   }, [currentCo2]);
 
+  const renderBoldText = (text: string) => {
+    const parts = text.split(/(\*\*.*?\*\*)/g);
+    return parts.map((part, idx) => {
+      if (part.startsWith('**') && part.endsWith('**')) {
+        return <strong key={idx} className="font-bold text-slate-900 dark:text-white">{part.slice(2, -2)}</strong>;
+      }
+      return part;
+    });
+  };
+
   const predefinedScenarios = [
     "What if I switch to a 100% plant-based diet?",
     "What if I commute by bicycle 3 days a week instead of driving?",
@@ -137,14 +147,16 @@ export default function SimulatorPage() {
                   if (line.startsWith('* ') || line.startsWith('- ')) {
                     const text = line.substring(2);
                     return (
-                      <li key={i} className="ml-6 mb-3 text-slate-700 dark:text-slate-300 leading-relaxed text-base list-disc" dangerouslySetInnerHTML={{ __html: text.replace(/\*\*(.*?)\*\*/g, '<strong class="text-slate-900 dark:text-white font-bold">$1</strong>') }} />
+                      <li key={i} className="ml-6 mb-3 text-slate-700 dark:text-slate-300 leading-relaxed text-base list-disc">
+                        {renderBoldText(text)}
+                      </li>
                     );
                   }
                   
                   if (line.trim() === '' || line.startsWith('---')) return <br key={i} />;
                   
                   // Paragraphs with bold text support
-                  return <p key={i} className="mb-5 text-slate-700 dark:text-slate-300 leading-relaxed text-base" dangerouslySetInnerHTML={{ __html: line.replace(/\*\*(.*?)\*\*/g, '<strong class="text-slate-900 dark:text-white font-bold">$1</strong>') }} />;
+                  return <p key={i} className="mb-5 text-slate-700 dark:text-slate-300 leading-relaxed text-base">{renderBoldText(line)}</p>;
                 })}
               </div>
             )}
